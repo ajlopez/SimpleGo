@@ -1,4 +1,4 @@
-# SimplGo
+# SimpleGo
 
 Go game implementation with evaluators.
 
