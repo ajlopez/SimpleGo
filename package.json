@@ -10,6 +10,7 @@
     "test": "node ./test.js"
   }
 , "dependencies": {
+    "simpleboard": "*"
   }
 , "devDependencies": {
   }
