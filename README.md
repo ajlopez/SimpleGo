@@ -10,7 +10,6 @@ Via npm on Node:
 npm install simplego
 ```
 
-
 ## Usage
 
 Reference in your program:
@@ -36,6 +35,13 @@ TBD
 ## To do
 
 - Samples
+
+## References
+
+- [Computer Go](http://en.wikipedia.org/wiki/Computer_Go)
+- [Computer Go at Sensei's Library](http://senseis.xmp.net/?ComputerGo)
+- [Computer Go Ladder](http://en.wikipedia.org/wiki/Computer_Go_Ladder)
+- [Computer Go demystified: An interview with Martin Müller](http://gogameguru.com/computer-go-demystified-interview-martin-mueller/)
 
 ## Contribution
 
