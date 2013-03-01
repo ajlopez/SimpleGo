@@ -29,3 +29,19 @@ assert.equal(positions[0].x, 3);
 assert.equal(positions[0].y, 3);
 assert.equal(positions[0].content.color, simplego.Black);
 
+// play white
+
+game.play(2, 5, simplego.White);
+
+var positions = game.getPositions();
+
+assert.ok(positions);
+assert.equal(positions.length, 2);
+assert.equal(positions[0].x, 3);
+assert.equal(positions[0].y, 3);
+assert.equal(positions[0].content.color, simplego.Black);
+assert.equal(positions[1].x, 2);
+assert.equal(positions[1].y, 5);
+assert.equal(positions[1].content.color, simplego.White);
+
+
