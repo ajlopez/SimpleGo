@@ -44,4 +44,13 @@ assert.equal(positions[1].x, 2);
 assert.equal(positions[1].y, 5);
 assert.equal(positions[1].content.color, simplego.White);
 
+// is valid on empty
+
+assert.ok(game.isValidPlay(10, 10, simplego.White));
+assert.ok(game.isValidPlay(10, 10, simplego.Black));
+
+// is invalid on a stone
+
+assert.ok(!game.isValidPlay(2, 5, simplego.White));
+assert.ok(!game.isValidPlay(2, 5, simplego.Black));
 
