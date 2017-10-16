@@ -10,25 +10,24 @@ exports['create game with initial board'] = function (test) {
 	var game = simplego.game();
 	test.ok(game);
 
-	var positions = game.getPositions();
+	var positions = game.positions();
 
 	test.ok(positions);
 	test.equal(positions.length, 0);
 }
-
 
 exports['play black'] = function (test) {
 	var game = simplego.game();
 
 	game.play(3, 3, simplego.Black);
 
-	var positions = game.getPositions();
+	var positions = game.positions();
 
 	test.ok(positions);
 	test.equal(positions.length, 1);
 	test.equal(positions[0].x, 3);
 	test.equal(positions[0].y, 3);
-	test.equal(positions[0].content.color, simplego.Black);
+	test.equal(positions[0].color, simplego.Black);
 }
 
 exports['plat black and white'] = function (test) {
@@ -37,16 +36,16 @@ exports['plat black and white'] = function (test) {
 	game.play(3, 3, simplego.Black);
 	game.play(2, 5, simplego.White);
 
-	var positions = game.getPositions();
+	var positions = game.positions();
 
 	test.ok(positions);
 	test.equal(positions.length, 2);
 	test.equal(positions[0].x, 3);
 	test.equal(positions[0].y, 3);
-	test.equal(positions[0].content.color, simplego.Black);
+	test.equal(positions[0].color, simplego.Black);
 	test.equal(positions[1].x, 2);
 	test.equal(positions[1].y, 5);
-	test.equal(positions[1].content.color, simplego.White);
+	test.equal(positions[1].color, simplego.White);
 }
 
 exports['is valid on empty'] = function (test) {
