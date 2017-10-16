@@ -1,15 +1,18 @@
 
-var simplego = require('../'),
-    assert = require('assert');
+var simplego = require('../');
     
-// create board
+exports['create board'] = function (test) {
+	var board = simplego.createBoard();
+	test.ok(board);
+	test.equal(board.getWidth(), 19);
+	test.equal(board.getHeight(), 19);
+}
 
-var board = simplego.createBoard();
-assert.ok(board);
-assert.equal(board.getWidth(), 19);
-assert.equal(board.getHeight(), 19);
+exports['get no positions from empty board'] = function (test) {
+	var board = simplego.createBoard();
+	var positions = board.getPositions();
 
-var positions = board.getPositions();
+	test.ok(positions);
+	test.equal(positions.length, 0);
+}
 
-assert.ok(positions);
-assert.equal(positions.length, 0);
