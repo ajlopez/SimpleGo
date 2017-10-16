@@ -7,11 +7,12 @@
 , "main": "./lib/simplego.js"
 , "engines": { "node": ">= 0.6.0 && < 0.9.0" }
 , "scripts": {
-    "test": "node ./test.js"
+    "test": "simpleunit -r ./test"
   }
 , "dependencies": {
     "simpleboard": ">= 0.0.1"
   }
 , "devDependencies": {
+    "simpleunit": "0.0.7"
   }
 }

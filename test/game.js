@@ -1,56 +1,74 @@
 
-var simplego = require('../'),
-    assert = require('assert');
+var simplego = require('../');
 
-// Colors defined
-
-assert.ok(simplego.White);
-assert.ok(simplego.Black);
+exports['colors defined'] = function (test) {
+	test.ok(simplego.White);
+	test.ok(simplego.Black);
+}
     
-// create game with initial board
+exports['create game with initial board'] = function (test) {
+	var game = simplego.createGame();
+	test.ok(game);
 
-var game = simplego.createGame();
-assert.ok(game);
+	var positions = game.getPositions();
 
-var positions = game.getPositions();
+	test.ok(positions);
+	test.equal(positions.length, 0);
+}
 
-assert.ok(positions);
-assert.equal(positions.length, 0);
 
-// play black
+exports['play black'] = function (test) {
+	var game = simplego.createGame();
 
-game.play(3, 3, simplego.Black);
+	game.play(3, 3, simplego.Black);
 
-var positions = game.getPositions();
+	var positions = game.getPositions();
 
-assert.ok(positions);
-assert.equal(positions.length, 1);
-assert.equal(positions[0].x, 3);
-assert.equal(positions[0].y, 3);
-assert.equal(positions[0].content.color, simplego.Black);
+	test.ok(positions);
+	test.equal(positions.length, 1);
+	test.equal(positions[0].x, 3);
+	test.equal(positions[0].y, 3);
+	test.equal(positions[0].content.color, simplego.Black);
+}
 
-// play white
+exports['plat black and white'] = function (test) {
+	var game = simplego.createGame();
 
-game.play(2, 5, simplego.White);
+	game.play(3, 3, simplego.Black);
+	game.play(2, 5, simplego.White);
 
-var positions = game.getPositions();
+	var positions = game.getPositions();
 
-assert.ok(positions);
-assert.equal(positions.length, 2);
-assert.equal(positions[0].x, 3);
-assert.equal(positions[0].y, 3);
-assert.equal(positions[0].content.color, simplego.Black);
-assert.equal(positions[1].x, 2);
-assert.equal(positions[1].y, 5);
-assert.equal(positions[1].content.color, simplego.White);
+	test.ok(positions);
+	test.equal(positions.length, 2);
+	test.equal(positions[0].x, 3);
+	test.equal(positions[0].y, 3);
+	test.equal(positions[0].content.color, simplego.Black);
+	test.equal(positions[1].x, 2);
+	test.equal(positions[1].y, 5);
+	test.equal(positions[1].content.color, simplego.White);
+}
 
-// is valid on empty
+exports['is valid on empty'] = function (test) {
+	var game = simplego.createGame();
 
-assert.ok(game.isValidPlay(10, 10, simplego.White));
-assert.ok(game.isValidPlay(10, 10, simplego.Black));
+	for (var x = 0; x < 19; x++)
+		for (var y = 0; y < 19; y++) {
+			test.ok(game.isValidPlay(x, y, simplego.White));
+			test.ok(game.isValidPlay(x, y, simplego.Black));
+		}
+}
 
-// is invalid on a stone
+exports['is invalid on a stone'] = function (test) {
+	var game = simplego.createGame();
 
-assert.ok(!game.isValidPlay(2, 5, simplego.White));
-assert.ok(!game.isValidPlay(2, 5, simplego.Black));
+	game.play(3, 3, simplego.Black);
+	game.play(2, 5, simplego.White);
+
+	test.ok(!game.isValidPlay(3, 3, simplego.White));
+	test.ok(!game.isValidPlay(2, 5, simplego.White));
+	test.ok(!game.isValidPlay(3, 3, simplego.Black));
+	test.ok(!game.isValidPlay(2, 5, simplego.Black));
+}
+
 
