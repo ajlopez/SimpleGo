@@ -7,7 +7,7 @@ exports['colors defined'] = function (test) {
 }
     
 exports['create game with initial board'] = function (test) {
-	var game = simplego.createGame();
+	var game = simplego.game();
 	test.ok(game);
 
 	var positions = game.getPositions();
@@ -18,7 +18,7 @@ exports['create game with initial board'] = function (test) {
 
 
 exports['play black'] = function (test) {
-	var game = simplego.createGame();
+	var game = simplego.game();
 
 	game.play(3, 3, simplego.Black);
 
@@ -32,7 +32,7 @@ exports['play black'] = function (test) {
 }
 
 exports['plat black and white'] = function (test) {
-	var game = simplego.createGame();
+	var game = simplego.game();
 
 	game.play(3, 3, simplego.Black);
 	game.play(2, 5, simplego.White);
@@ -50,7 +50,7 @@ exports['plat black and white'] = function (test) {
 }
 
 exports['is valid on empty'] = function (test) {
-	var game = simplego.createGame();
+	var game = simplego.game();
 
 	for (var x = 0; x < 19; x++)
 		for (var y = 0; y < 19; y++) {
@@ -60,7 +60,7 @@ exports['is valid on empty'] = function (test) {
 }
 
 exports['is invalid on a stone'] = function (test) {
-	var game = simplego.createGame();
+	var game = simplego.game();
 
 	game.play(3, 3, simplego.Black);
 	game.play(2, 5, simplego.White);
