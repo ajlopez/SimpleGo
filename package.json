@@ -10,7 +10,6 @@
     "test": "simpleunit -r ./test"
   }
 , "dependencies": {
-    "simpleboard": ">= 0.0.1"
   }
 , "devDependencies": {
     "simpleunit": "0.0.7"
