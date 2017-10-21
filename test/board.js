@@ -6,6 +6,7 @@ exports['create board'] = function (test) {
 	test.ok(board);
 	test.equal(board.width(), 19);
 	test.equal(board.height(), 19);
+	test.equal(board.size(), 19 * 19);
 }
 
 exports['get no positions from empty board'] = function (test) {
