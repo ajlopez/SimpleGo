@@ -17,3 +17,14 @@ exports['get no positions from empty board'] = function (test) {
 	test.equal(positions.length, 0);
 }
 
+exports['valid and invalid cells'] = function (test) {
+	var board = simplego.board();
+	
+	test.ok(board.valid(0, 0));
+	test.ok(board.valid(18, 18));
+	
+	test.ok(!board.valid(-1, 0));
+	test.ok(!board.valid(0, -1));
+	test.ok(!board.valid(19, 0));
+	test.ok(!board.valid(0, 19));
+}
