@@ -27,7 +27,7 @@ exports['get on cell with stone'] = function (test) {
 	
 	game.play(10, 10, simplego.Black);
 	
-	test.deepEqual(game.get(10, 10), { color: simplego.Black });
+	test.deepEqual(game.get(10, 10), { x: 10, y: 10, color: simplego.Black });
 }
 
 exports['play black'] = function (test) {
