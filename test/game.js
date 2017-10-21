@@ -16,6 +16,12 @@ exports['create game with initial board'] = function (test) {
 	test.equal(positions.length, 0);
 }
 
+exports['get empty cell'] = function (test) {
+	var game = simplego.game();
+	
+	test.equal(game.get(10, 10), null);
+}
+
 exports['play black'] = function (test) {
 	var game = simplego.game();
 
@@ -30,7 +36,7 @@ exports['play black'] = function (test) {
 	test.equal(positions[0].color, simplego.Black);
 }
 
-exports['plat black and white'] = function (test) {
+exports['play black and white'] = function (test) {
 	var game = simplego.game();
 
 	game.play(3, 3, simplego.Black);
