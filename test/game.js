@@ -16,10 +16,18 @@ exports['create game with initial board'] = function (test) {
 	test.equal(positions.length, 0);
 }
 
-exports['get empty cell'] = function (test) {
+exports['get on empty cell'] = function (test) {
 	var game = simplego.game();
 	
 	test.equal(game.get(10, 10), null);
+}
+
+exports['get on cell with stone'] = function (test) {
+	var game = simplego.game();
+	
+	game.play(10, 10, simplego.Black);
+	
+	test.deepEqual(game.get(10, 10), { color: simplego.Black });
 }
 
 exports['play black'] = function (test) {
