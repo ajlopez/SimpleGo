@@ -15,9 +15,9 @@ exports['get string from cell with stone'] = function (test) {
 	var string = game.string(3, 3);
 	
 	test.ok(string);
-	test.ok(string.cells);
-	test.ok(Array.isArray(string.cells));
-	test.equal(string.cells.length, 1);
-	test.deepEqual(string.cells[0], { x: 3, y: 3, color: simplego.Black });
+	test.ok(string.stones);
+	test.ok(Array.isArray(string.stones));
+	test.equal(string.stones.length, 1);
+	test.deepEqual(string.stones[0], { x: 3, y: 3, color: simplego.Black });
 }
 
