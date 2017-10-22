@@ -31,5 +31,8 @@ exports['get string from cell with stone and neighbor stone'] = function (test) 
 	test.equal(string.stones().length, 2);
 	test.deepEqual(string.stones()[0], { x: 3, y: 3, color: simplego.Black });
 	test.deepEqual(string.stones()[1], { x: 4, y: 3, color: simplego.Black });
+	
+	test.equal(string, game.string(4,3));
 }
+
 
