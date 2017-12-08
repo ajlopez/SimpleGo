@@ -40,8 +40,8 @@ exports['get group from cell with stone'] = function (test) {
 exports['get group from cell with stone and neighbor stone'] = function (test) {
 	var game = simplego.game();
 	
-	game.play(3, 3, simplego.Black)
-	game.play(4, 3, simplego.Black)
+	game.play(3, 3, simplego.Black);
+	game.play(4, 3, simplego.Black);
 	
 	var group = game.group(3, 3);
 	
@@ -66,6 +66,21 @@ exports['get groups from game with two stones in a group'] = function (test) {
 	test.equal(groups.length, 1);
 	test.ok(contains(groups[0].stones(), { x: 3, y: 3, color: simplego.Black }));
 	test.ok(contains(groups[0].stones(), { x: 4, y: 3, color: simplego.Black }));
+}
+
+exports['get groups from game with two stones with different colors'] = function (test) {
+	var game = simplego.game();
+	
+	game.play(3, 3, simplego.Black);
+	game.play(4, 3, simplego.White);
+	
+	var groups = game.groups();
+	
+	test.ok(groups);
+	test.ok(Array.isArray(groups));
+	test.equal(groups.length, 2);
+	test.ok(contains(groups[0].stones(), { x: 3, y: 3, color: simplego.Black }));
+	test.ok(contains(groups[1].stones(), { x: 4, y: 3, color: simplego.White }));
 }
 
 exports['get group with five stones'] = function (test) {
