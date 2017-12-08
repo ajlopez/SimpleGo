@@ -15,6 +15,16 @@ exports['get group from empty cell'] = function (test) {
 	test.equal(game.group(3, 3), null);
 }
 
+exports['get groups from empty game'] = function (test) {
+	var game = simplego.game();
+	
+	var result = game.groups();
+	
+	test.ok(result);
+	test.ok(Array.isArray(result));
+	test.equal(result.length, 0);
+}
+
 exports['get group from cell with stone'] = function (test) {
 	var game = simplego.game();
 	
