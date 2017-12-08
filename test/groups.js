@@ -53,6 +53,21 @@ exports['get group from cell with stone and neighbor stone'] = function (test) {
 	test.equal(group, game.group(4,3));
 }
 
+exports['get groups from game with two stones in a group'] = function (test) {
+	var game = simplego.game();
+	
+	game.play(3, 3, simplego.Black)
+	game.play(4, 3, simplego.Black)
+	
+	var groups = game.groups();
+	
+	test.ok(groups);
+	test.ok(Array.isArray(groups));
+	test.equal(groups.length, 1);
+	test.ok(contains(groups[0].stones(), { x: 3, y: 3, color: simplego.Black }));
+	test.ok(contains(groups[0].stones(), { x: 4, y: 3, color: simplego.Black }));
+}
+
 exports['get group with five stones'] = function (test) {
 	var game = simplego.game();
 	
