@@ -127,7 +127,7 @@ exports['group union'] = function (test) {
 	test.equal(group.stones().length, 1);
 	test.deepEqual(group.stones()[0], { x: 5, y: 3, color: simplego.Black });
 	
-	game.play(4, 3, simplego.Black)
+	game.play(4, 3, simplego.Black);
 
 	var group = game.group(3, 3);
 	
@@ -138,5 +138,30 @@ exports['group union'] = function (test) {
 	test.ok(contains(group.stones(), { x: 5, y: 3, color: simplego.Black }));
 }
 
+exports['group no union with different color'] = function (test) {
+	var game = simplego.game();
+	
+	game.play(3, 3, simplego.Black)
+	game.play(5, 3, simplego.Black)
+	
+	var group = game.group(3, 3);
+	
+	test.ok(group);
+	test.equal(group.stones().length, 1);
+	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
+	
+	var group = game.group(5, 3);
+	
+	test.ok(group);
+	test.equal(group.stones().length, 1);
+	test.deepEqual(group.stones()[0], { x: 5, y: 3, color: simplego.Black });
+	
+	game.play(4, 3, simplego.White)
 
+	var group = game.group(3, 3);
+	
+	test.ok(group);
+	test.equal(group.stones().length, 1);
+	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
+}
 
