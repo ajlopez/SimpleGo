@@ -37,6 +37,23 @@ exports['get group from cell with stone'] = function (test) {
 	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
 }
 
+exports['get group from cell with stone given board with initial position'] = function (test) {
+	var board = simplego.board(19, 19, [
+		'....',
+		'....',
+		'....',
+		'...X'
+	]);
+	
+	var game = simplego.game(board);
+	
+	var group = game.group(3, 3);
+	
+	test.ok(group);
+	test.equal(group.stones().length, 1);
+	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
+}
+
 exports['get group from cell with stone and neighbor stone'] = function (test) {
 	var game = simplego.game();
 	
