@@ -37,6 +37,18 @@ exports['get group from cell with stone'] = function (test) {
 	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
 }
 
+exports['get group union with itself'] = function (test) {
+	var game = simplego.game();
+	
+	game.play(3, 3, simplego.Black)
+	
+	var group = game.group(3, 3);
+	var result = group.union(group);
+	
+	test.ok(result);
+	test.strictEqual(result, group);
+}
+
 exports['get group from cell with stone given board with initial position'] = function (test) {
 	var board = simplego.board(19, 19, [
 		'....',
