@@ -82,6 +82,18 @@ exports['get group from cell with stone and neighbor stone'] = function (test) {
 	test.equal(group, game.group(4,3));
 }
 
+exports['get same group from two stones'] = function (test) {
+	var game = simplego.game();
+	
+	game.play(3, 3, simplego.Black);
+	game.play(4, 3, simplego.Black);
+	
+	var group1 = game.group(3, 3);
+	var group2 = game.group(4, 3);
+
+	test.ok(group1 === group2);
+}
+
 exports['get groups from game with two stones in a group'] = function (test) {
 	var game = simplego.game();
 	
