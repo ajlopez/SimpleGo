@@ -1,11 +1,12 @@
 
-var simplego = require('../');
+const simplego = require('../');
 
-var Black = simplego.Black;
-var White = simplego.White;
+const Black = simplego.Black;
+const White = simplego.White;
     
 exports['create board'] = function (test) {
-	var board = simplego.board();
+	const board = simplego.board();
+    
 	test.ok(board);
 	test.equal(board.width(), 19);
 	test.equal(board.height(), 19);
@@ -13,21 +14,21 @@ exports['create board'] = function (test) {
 }
 
 exports['get no positions from empty board'] = function (test) {
-	var board = simplego.board();
-	var positions = board.positions();
+	const board = simplego.board();
+	const positions = board.positions();
 
 	test.ok(positions);
 	test.equal(positions.length, 0);
 }
 
 exports['get positions from board with initial position'] = function (test) {
-	var board = simplego.board(19, 19, [
+	const board = simplego.board(19, 19, [
         '. . .',
         '. X O',
         '. . X'
     ]);
     
-	var positions = board.positions();
+	const positions = board.positions();
 
 	test.ok(positions);
 	test.equal(positions.length, 3);
@@ -38,7 +39,7 @@ exports['get positions from board with initial position'] = function (test) {
 }
 
 exports['valid and invalid cells'] = function (test) {
-	var board = simplego.board();
+	const board = simplego.board();
 	
 	test.ok(board.valid(0, 0));
 	test.ok(board.valid(18, 18));
