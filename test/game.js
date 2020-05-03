@@ -1,5 +1,5 @@
 
-var simplego = require('../');
+const simplego = require('../');
 
 exports['colors defined'] = function (test) {
 	test.ok(simplego.White);
@@ -7,23 +7,24 @@ exports['colors defined'] = function (test) {
 }
     
 exports['create game with initial board'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
+
 	test.ok(game);
 
-	var positions = game.positions();
+	const positions = game.positions();
 
 	test.ok(positions);
 	test.equal(positions.length, 0);
 }
 
 exports['get on empty cell'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	test.equal(game.get(10, 10), null);
 }
 
 exports['get on cell with stone'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(10, 10, simplego.Black);
 	
@@ -31,11 +32,11 @@ exports['get on cell with stone'] = function (test) {
 }
 
 exports['play black'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 
 	game.play(3, 3, simplego.Black);
 
-	var positions = game.positions();
+	const positions = game.positions();
 
 	test.ok(positions);
 	test.equal(positions.length, 1);
@@ -45,12 +46,12 @@ exports['play black'] = function (test) {
 }
 
 exports['play black and white'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 
 	game.play(3, 3, simplego.Black);
 	game.play(2, 5, simplego.White);
 
-	var positions = game.positions();
+	const positions = game.positions();
 
 	test.ok(positions);
 	test.equal(positions.length, 2);
@@ -63,17 +64,17 @@ exports['play black and white'] = function (test) {
 }
 
 exports['is valid on empty'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 
-	for (var x = 0; x < 19; x++)
-		for (var y = 0; y < 19; y++) {
+	for (let x = 0; x < 19; x++)
+		for (let y = 0; y < 19; y++) {
 			test.ok(game.isValidPlay(x, y, simplego.White));
 			test.ok(game.isValidPlay(x, y, simplego.Black));
 		}
 }
 
 exports['is invalid on a stone'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 
 	game.play(3, 3, simplego.Black);
 	game.play(2, 5, simplego.White);
@@ -83,5 +84,4 @@ exports['is invalid on a stone'] = function (test) {
 	test.ok(!game.isValidPlay(3, 3, simplego.Black));
 	test.ok(!game.isValidPlay(2, 5, simplego.Black));
 }
-
 
