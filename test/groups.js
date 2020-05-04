@@ -1,8 +1,8 @@
 
-var simplego = require('../');
+const simplego = require('../');
 
 function contains(stones, stone) {
-	for (var k = 0; k < stones.length; k++)
+	for (let k = 0; k < stones.length; k++)
 		if (stones[k].x === stone.x && stones[k].y === stone.y && stones[k].color === stone.color)
 			return true;
 	
@@ -10,15 +10,15 @@ function contains(stones, stone) {
 }
 
 exports['get group from empty cell'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	test.equal(game.group(3, 3), null);
 }
 
 exports['get groups from empty game'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
-	var result = game.groups();
+	const result = game.groups();
 	
 	test.ok(result);
 	test.ok(Array.isArray(result));
@@ -26,11 +26,11 @@ exports['get groups from empty game'] = function (test) {
 }
 
 exports['get group from cell with stone'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(3, 3, simplego.Black)
 	
-	var group = game.group(3, 3);
+	const group = game.group(3, 3);
 	
 	test.ok(group);
 	test.equal(group.stones().length, 1);
@@ -38,28 +38,28 @@ exports['get group from cell with stone'] = function (test) {
 }
 
 exports['get group union with itself'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(3, 3, simplego.Black)
 	
-	var group = game.group(3, 3);
-	var result = group.union(group);
+	const group = game.group(3, 3);
+	const result = group.union(group);
 	
 	test.ok(result);
 	test.strictEqual(result, group);
 }
 
 exports['get group from cell with stone given board with initial position'] = function (test) {
-	var board = simplego.board(19, 19, [
+	const board = simplego.board(19, 19, [
 		'....',
 		'....',
 		'....',
 		'...X'
 	]);
 	
-	var game = simplego.game(board);
+	const game = simplego.game(board);
 	
-	var group = game.group(3, 3);
+	const group = game.group(3, 3);
 	
 	test.ok(group);
 	test.equal(group.stones().length, 1);
@@ -67,12 +67,12 @@ exports['get group from cell with stone given board with initial position'] = fu
 }
 
 exports['get group from cell with stone and neighbor stone'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(3, 3, simplego.Black);
 	game.play(4, 3, simplego.Black);
 	
-	var group = game.group(3, 3);
+	const group = game.group(3, 3);
 	
 	test.ok(group);
 	test.equal(group.stones().length, 2);
@@ -83,24 +83,24 @@ exports['get group from cell with stone and neighbor stone'] = function (test) {
 }
 
 exports['get same group from two stones'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(3, 3, simplego.Black);
 	game.play(4, 3, simplego.Black);
 	
-	var group1 = game.group(3, 3);
-	var group2 = game.group(4, 3);
+	const group1 = game.group(3, 3);
+	const group2 = game.group(4, 3);
 
 	test.ok(group1 === group2);
 }
 
 exports['get groups from game with two stones in a group'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(3, 3, simplego.Black)
 	game.play(4, 3, simplego.Black)
 	
-	var groups = game.groups();
+	const groups = game.groups();
 	
 	test.ok(groups);
 	test.ok(Array.isArray(groups));
@@ -110,12 +110,12 @@ exports['get groups from game with two stones in a group'] = function (test) {
 }
 
 exports['get groups from game with two stones with different colors'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(3, 3, simplego.Black);
 	game.play(4, 3, simplego.White);
 	
-	var groups = game.groups();
+	const groups = game.groups();
 	
 	test.ok(groups);
 	test.ok(Array.isArray(groups));
@@ -125,7 +125,7 @@ exports['get groups from game with two stones with different colors'] = function
 }
 
 exports['get group with five stones'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(2, 3, simplego.Black)
 	game.play(3, 3, simplego.Black)
@@ -133,7 +133,7 @@ exports['get group with five stones'] = function (test) {
 	game.play(3, 2, simplego.Black)
 	game.play(3, 4, simplego.Black)
 	
-	var group = game.group(3, 3);
+	const group = game.group(3, 3);
 	
 	test.ok(group);
 	test.equal(group.stones().length, 5);
@@ -151,58 +151,58 @@ exports['get group with five stones'] = function (test) {
 }
 
 exports['group union'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(3, 3, simplego.Black)
 	game.play(5, 3, simplego.Black)
 	
-	var group = game.group(3, 3);
+	const group = game.group(3, 3);
 	
 	test.ok(group);
 	test.equal(group.stones().length, 1);
 	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
 	
-	var group = game.group(5, 3);
+	const group2 = game.group(5, 3);
 	
-	test.ok(group);
-	test.equal(group.stones().length, 1);
-	test.deepEqual(group.stones()[0], { x: 5, y: 3, color: simplego.Black });
+	test.ok(group2);
+	test.equal(group2.stones().length, 1);
+	test.deepEqual(group2.stones()[0], { x: 5, y: 3, color: simplego.Black });
 	
 	game.play(4, 3, simplego.Black);
 
-	var group = game.group(3, 3);
+	const group3 = game.group(3, 3);
 	
-	test.ok(group);
-	test.equal(group.stones().length, 3);
-	test.ok(contains(group.stones(), { x: 3, y: 3, color: simplego.Black }));
-	test.ok(contains(group.stones(), { x: 4, y: 3, color: simplego.Black }));
-	test.ok(contains(group.stones(), { x: 5, y: 3, color: simplego.Black }));
+	test.ok(group3);
+	test.equal(group3.stones().length, 3);
+	test.ok(contains(group3.stones(), { x: 3, y: 3, color: simplego.Black }));
+	test.ok(contains(group3.stones(), { x: 4, y: 3, color: simplego.Black }));
+	test.ok(contains(group3.stones(), { x: 5, y: 3, color: simplego.Black }));
 }
 
 exports['group no union with different color'] = function (test) {
-	var game = simplego.game();
+	const game = simplego.game();
 	
 	game.play(3, 3, simplego.Black)
 	game.play(5, 3, simplego.Black)
 	
-	var group = game.group(3, 3);
+	const group = game.group(3, 3);
 	
 	test.ok(group);
 	test.equal(group.stones().length, 1);
 	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
 	
-	var group = game.group(5, 3);
+	const group2 = game.group(5, 3);
 	
-	test.ok(group);
-	test.equal(group.stones().length, 1);
-	test.deepEqual(group.stones()[0], { x: 5, y: 3, color: simplego.Black });
+	test.ok(group2);
+	test.equal(group2.stones().length, 1);
+	test.deepEqual(group2.stones()[0], { x: 5, y: 3, color: simplego.Black });
 	
 	game.play(4, 3, simplego.White)
 
-	var group = game.group(3, 3);
+	const group3 = game.group(3, 3);
 	
-	test.ok(group);
-	test.equal(group.stones().length, 1);
-	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
+	test.ok(group3);
+	test.equal(group3.stones().length, 1);
+	test.deepEqual(group3.stones()[0], { x: 3, y: 3, color: simplego.Black });
 }
 
