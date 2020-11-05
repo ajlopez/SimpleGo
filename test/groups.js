@@ -35,6 +35,7 @@ exports['get group from cell with stone'] = function (test) {
 	test.ok(group);
 	test.equal(group.stones().length, 1);
 	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
+    test.equal(group.liberties(), 4);
 }
 
 exports['get group union with itself'] = function (test) {
@@ -47,6 +48,7 @@ exports['get group union with itself'] = function (test) {
 	
 	test.ok(result);
 	test.strictEqual(result, group);
+    test.equal(result.liberties(), 4);
 }
 
 exports['get group from cell with stone given board with initial position'] = function (test) {
@@ -64,6 +66,7 @@ exports['get group from cell with stone given board with initial position'] = fu
 	test.ok(group);
 	test.equal(group.stones().length, 1);
 	test.deepEqual(group.stones()[0], { x: 3, y: 3, color: simplego.Black });
+    test.equal(group.liberties(), 4);
 }
 
 exports['get group from cell with stone and neighbor stone'] = function (test) {
@@ -80,6 +83,7 @@ exports['get group from cell with stone and neighbor stone'] = function (test) {
 	test.ok(contains(group.stones(), { x: 4, y: 3, color: simplego.Black }));
 	
 	test.equal(group, game.group(4,3));
+    test.equal(group.liberties(), 6);
 }
 
 exports['get same group from two stones'] = function (test) {
@@ -122,6 +126,8 @@ exports['get groups from game with two stones with different colors'] = function
 	test.equal(groups.length, 2);
 	test.ok(contains(groups[0].stones(), { x: 3, y: 3, color: simplego.Black }));
 	test.ok(contains(groups[1].stones(), { x: 4, y: 3, color: simplego.White }));
+    test.equal(groups[0].liberties(), 3);
+    test.equal(groups[1].liberties(), 3);
 }
 
 exports['get group with five stones'] = function (test) {
@@ -137,6 +143,7 @@ exports['get group with five stones'] = function (test) {
 	
 	test.ok(group);
 	test.equal(group.stones().length, 5);
+    test.equal(group.liberties(), 8);
 	
 	test.ok(contains(group.stones(), { x: 3, y: 3, color: simplego.Black }));
 	test.ok(contains(group.stones(), { x: 2, y: 3, color: simplego.Black }));
