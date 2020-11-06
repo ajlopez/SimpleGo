@@ -69,6 +69,24 @@ exports['get group from cell with stone given board with initial position'] = fu
     test.equal(group.liberties(), 4);
 }
 
+exports['get group with stone at the corner'] = function (test) {
+	const board = simplego.board(19, 19, [
+		'X...',
+		'....',
+		'....',
+		'....'
+	]);
+	
+	const game = simplego.game(board);
+	
+	const group = game.group(0, 0);
+	
+	test.ok(group);
+	test.equal(group.stones().length, 1);
+	test.deepEqual(group.stones()[0], { x: 0, y: 0, color: simplego.Black });
+    test.equal(group.liberties(), 2);
+}
+
 exports['get group from cell with stone and neighbor stone'] = function (test) {
 	const game = simplego.game();
 	
