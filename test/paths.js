@@ -18,3 +18,13 @@ exports['path contains'] = function (test) {
     test.ok(!path.contains(3, 3));
 };
 
+exports['path positions'] = function (test) {
+    const path = simplego.path([[1, 1], [1, 2]]);
+    
+    const result = path.positions();
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.deepEqual(result, [[1, 1], [1, 2]]);
+};
+
