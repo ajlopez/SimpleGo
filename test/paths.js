@@ -28,3 +28,13 @@ exports['path positions'] = function (test) {
     test.deepEqual(result, [[1, 1], [1, 2]]);
 };
 
+exports['extend path'] = function (test) {
+    const path = simplego.path([[1, 1], [1, 2]]);
+    
+    const result = path.extend(2, 2);
+    
+    test.ok(result);
+    test.deepEqual(result.positions(), [[1, 1], [1, 2], [2, 2]]);
+    test.deepEqual(path.positions(), [[1, 1], [1, 2]]);
+};
+
