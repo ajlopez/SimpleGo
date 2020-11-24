@@ -78,4 +78,21 @@ exports['get paths up to lenght 3 from position in non empty board'] = function 
     test.ok(result);
     test.ok(Array.isArray(result));
     test.equal(result.length, 14);
+    
+    let nfrom = 0;
+    
+    for (let k = 0; k < result.length; k++)
+        if (!result[k].fromColor(board))
+            nfrom++;
+        
+    test.equal(nfrom, 14);
+    
+    let nto = 0;
+    
+    for (let k = 0; k < result.length; k++)
+        if (result[k].toColor(board) === simplego.White)
+            nto++;
+        
+    test.equal(nto, 1);
 };
+
