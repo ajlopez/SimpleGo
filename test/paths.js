@@ -14,8 +14,21 @@ exports['path contains'] = function (test) {
     
     test.ok(path.contains(1, 1));
     test.ok(path.contains(1, 2));
+    
     test.ok(!path.contains(2, 1));
     test.ok(!path.contains(3, 3));
+};
+
+exports['path touch'] = function (test) {
+    const path = simplego.path([[1, 1], [1, 2]]);
+    
+    test.ok(path.touch(0, 1));
+    test.ok(path.touch(1, 0));
+    test.ok(path.touch(1, 2));
+    
+    test.ok(!path.touch(1, 3));
+    test.ok(!path.touch(2, 2));
+    test.ok(!path.touch(3, 3));
 };
 
 exports['path positions'] = function (test) {
