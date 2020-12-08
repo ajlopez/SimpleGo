@@ -101,6 +101,16 @@ exports['get paths up to lenght 3 from position in empty board'] = function (tes
     test.equal(result.length, 17);
 };
 
+exports['get paths up to lenght 4 from position in empty board'] = function (test) {
+    const board = simplego.board();
+    
+    const result = board.paths(3, 3, 4);
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 17 + 4 * 7);
+};
+
 exports['get paths up to lenght 3 from position in non empty board'] = function (test) {
     const board = simplego.board();
     
