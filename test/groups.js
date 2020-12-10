@@ -231,3 +231,23 @@ exports['group no union with different color'] = function (test) {
 	test.deepEqual(group3.stones()[0], { x: 3, y: 3, color: simplego.Black });
 }
 
+exports['remote group with two stones'] = function (test) {
+	const game = simplego.game();
+	
+	game.play(3, 3, simplego.Black);
+	game.play(3, 4, simplego.Black);
+	
+	const group = game.group(3, 3);
+    
+    test.equal(group.stones().length, 2);
+    
+    group.remove();
+    
+    test.equal(game.get(3, 3), null);
+    test.equal(game.get(3, 4), null);
+    test.equal(game.group(3, 3), null);
+    test.equal(game.group(3, 4), null);
+    
+    test.equal(game.groups().length, 0);
+}
+
