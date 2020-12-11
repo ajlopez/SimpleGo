@@ -85,3 +85,44 @@ exports['is invalid on a stone'] = function (test) {
 	test.ok(!game.isValidPlay(2, 5, simplego.Black));
 }
 
+exports['is valid play to form heavy group'] = function (test) {
+	const game = simplego.game();
+
+	game.play(3, 3, simplego.Black);
+	game.play(3, 5, simplego.Black);
+	game.play(2, 4, simplego.Black);
+	game.play(4, 4, simplego.Black);
+
+	test.ok(game.isValidPlay(3, 4, simplego.Black));
+}
+
+exports['is invalid commit one stone suicide'] = function (test) {
+	const game = simplego.game();
+
+	game.play(3, 3, simplego.Black);
+	game.play(3, 5, simplego.Black);
+	game.play(2, 4, simplego.Black);
+	game.play(4, 4, simplego.Black);
+
+	test.ok(!game.isValidPlay(3, 4, simplego.White));
+}
+
+exports['is invalid commit one stone at corner'] = function (test) {
+	const game = simplego.game();
+
+	game.play(0, 1, simplego.Black);
+	game.play(1, 0, simplego.Black);
+
+	test.ok(!game.isValidPlay(0, 0, simplego.White));
+}
+
+exports['is invalid commit one stone at border'] = function (test) {
+	const game = simplego.game();
+
+	game.play(0, 1, simplego.Black);
+	game.play(1, 2, simplego.Black);
+	game.play(0, 3, simplego.Black);
+
+	test.ok(!game.isValidPlay(0, 2, simplego.White));
+}
+
