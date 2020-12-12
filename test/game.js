@@ -107,7 +107,7 @@ exports['is invalid commit one stone suicide'] = function (test) {
 	test.ok(!game.isValidPlay(3, 4, simplego.White));
 }
 
-exports['is invalid commit one stone at corner'] = function (test) {
+exports['is invalid commit suicide one stone at corner'] = function (test) {
 	const game = simplego.game();
 
 	game.play(0, 1, simplego.Black);
@@ -116,7 +116,7 @@ exports['is invalid commit one stone at corner'] = function (test) {
 	test.ok(!game.isValidPlay(0, 0, simplego.White));
 }
 
-exports['is invalid commit one stone at border'] = function (test) {
+exports['is invalid commit suicide one stone at border'] = function (test) {
 	const game = simplego.game();
 
 	game.play(0, 1, simplego.Black);
@@ -124,5 +124,19 @@ exports['is invalid commit one stone at border'] = function (test) {
 	game.play(0, 3, simplego.Black);
 
 	test.ok(!game.isValidPlay(0, 2, simplego.White));
+}
+
+exports['is invalid commit two stone suicide'] = function (test) {
+	const game = simplego.game();
+
+	game.play(2, 3, simplego.Black);
+	game.play(2, 5, simplego.Black);
+	game.play(3, 3, simplego.Black);
+	game.play(3, 5, simplego.Black);
+	game.play(1, 4, simplego.Black);
+	game.play(4, 4, simplego.Black);
+	game.play(2, 4, simplego.White);
+
+	test.ok(!game.isValidPlay(3, 4, simplego.White));
 }
 
