@@ -140,3 +140,38 @@ exports['is invalid commit two stone suicide'] = function (test) {
 	test.ok(!game.isValidPlay(3, 4, simplego.White));
 }
 
+exports['is invalid commit three stone suicide'] = function (test) {
+    const board = simplego.board([
+        '....',
+        '..O.',
+        '.OXO',
+        '.O.O',
+        '.OXO',
+        '..O.',
+    ]);
+    
+    test.ok(!board.get(2,3));
+    
+	const game = simplego.game(board);
+
+	test.ok(!game.isValidPlay(2, 3, simplego.Black));
+}
+
+
+exports['is valid commit three stone with one liberty'] = function (test) {
+    const board = simplego.board([
+        '....',
+        '..O.',
+        '.OXO',
+        '.O.O',
+        '.OXO',
+        '....',
+    ]);
+    
+    test.ok(!board.get(2,3));
+    
+	const game = simplego.game(board);
+
+	test.ok(game.isValidPlay(2, 3, simplego.Black));
+}
+
