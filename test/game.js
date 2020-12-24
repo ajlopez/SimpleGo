@@ -175,3 +175,44 @@ exports['is valid commit three stone with one liberty'] = function (test) {
 	test.ok(game.isValidPlay(2, 3, simplego.Black));
 }
 
+exports['play and kill one stone group'] = function (test) {
+    const board = simplego.board([
+        '....',
+        '..O.',
+        '.OXO',
+        '....',
+    ]);
+    
+    test.ok(!board.get(2,3));
+    
+	const game = simplego.game(board);
+
+	test.ok(game.isValidPlay(2, 3, simplego.White));
+    
+    game.play(2, 3, simplego.White);
+    
+    test.equal(game.get(2, 2), null);
+}
+
+exports['play and kill two one stone groups'] = function (test) {
+    const board = simplego.board([
+        '....',
+        '..O.',
+        '.OXO',
+        '.O.O',
+        '.OXO',
+        '..O.',
+    ]);
+    
+    test.ok(!board.get(2,3));
+    
+	const game = simplego.game(board);
+
+	test.ok(game.isValidPlay(2, 3, simplego.White));
+    
+    game.play(2, 3, simplego.White);
+    
+    test.equal(game.get(2, 2), null);
+    test.equal(game.get(2, 4), null);
+}
+
