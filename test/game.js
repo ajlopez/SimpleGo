@@ -189,9 +189,15 @@ exports['play and kill one stone group'] = function (test) {
 
 	test.ok(game.isValidPlay(2, 3, simplego.White));
     
+    const ngroups1 = game.groups().length;
+
     game.play(2, 3, simplego.White);
     
     test.equal(game.get(2, 2), null);
+
+    const ngroups2 = game.groups().length;
+    
+    test.equal(ngroups2, ngroups1);
 }
 
 exports['play and kill two one stone groups'] = function (test) {
@@ -210,9 +216,15 @@ exports['play and kill two one stone groups'] = function (test) {
 
 	test.ok(game.isValidPlay(2, 3, simplego.White));
     
+    const ngroups1 = game.groups().length;
+    
     game.play(2, 3, simplego.White);
     
     test.equal(game.get(2, 2), null);
     test.equal(game.get(2, 4), null);
+    
+    const ngroups2 = game.groups().length;
+    
+    test.equal(ngroups2 + 2 + 1, ngroups1);
 }
 
